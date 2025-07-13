@@ -9,19 +9,21 @@ slider.addEventListener("mousedown", (e) => {
   startX = e.pageX - slider.offsetLeft;
   ScrollLeft = slider.scrollLeft;
 });
+
 slider.addEventListener("mouseleave", () => {
   isDown = false;
   slider.classList.remove("active");
 });
+
 slider.addEventListener("mouseup", () => {
   isDown = false;
   slider.classList.remove("active");
 });
+
 slider.addEventListener("mousemove", (e) => {
   if (!isDown) return;
-  e.preventDefault();
+  e.preventDefault(); // prevent default activity
   const x = e.pageX - slider.offsetLeft;
-
-  const walk = x - startX;
+  const walk = (x - startX) * 2;
   slider.scrollLeft = ScrollLeft - walk;
 });
